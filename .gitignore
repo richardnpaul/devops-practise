@@ -27,3 +27,4 @@ yarn-error.log*
 *.tfstate.*
 **/.terraform/*
 terraform.tfvars
+lambda.zip
