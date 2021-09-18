@@ -26,3 +26,4 @@ yarn-error.log*
 *.tfstate
 *.tfstate.*
 **/.terraform/*
+terraform.tfvars

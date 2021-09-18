@@ -24,7 +24,7 @@ resource "aws_s3_bucket" "artificial_bucket" {
 }
 
 resource "aws_s3_bucket" "app_bucket" {
-  bucket = "artificial.richardnpaul.uk"
+  bucket = var.site_domain
   acl    = "public-read"
   tags   = {}
 
