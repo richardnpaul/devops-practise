@@ -1,8 +1,3 @@
-provider "aws" {
-  alias  = "london"
-  region = "eu-west-2"
-}
-
 resource "aws_s3_bucket" "artificial_bucket" {
   bucket = "richardnpaul-tf"
   tags   = {}
