@@ -10,6 +10,32 @@ variable "site_domain" {
 }
 
 variable "cloudflare_zone_id" {
-  type = string
+  type        = string
   description = "The zone id from Cloudflare"
+}
+
+variable "lambda_s3_bucket" {
+  type        = string
+  description = "The bucket to store files from the lambda function"
+}
+
+variable "artificial_bucket" {
+  type        = string
+  description = "The bucket to store the terraform state file"
+}
+
+variable "tf_log_bucket" {
+  type        = string
+  description = "The bucket to store access log files to from the other buckets"
+}
+
+variable "tf_user" {
+  type        = string
+  description = "The iam user used by terraform"
+}
+
+variable "auth_token" {
+  type        = string
+  description = "The authorization header token"
+  sensitive   = true
 }
