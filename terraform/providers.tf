@@ -3,7 +3,7 @@ terraform {
     bucket                  = "richardnpaul-tf"
     shared_credentials_file = "~/.aws/credentials"
     profile                 = "terraform"
-    region                  = var.aws_region
+    region                  = "eu-west-2"
   }
   required_providers {
     aws = {
