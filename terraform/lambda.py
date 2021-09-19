@@ -6,8 +6,6 @@ from datetime import datetime
 
 def handler(event, context):
 
-    print(event["body"])
-
     # Get the three fields, or if they weren't submitted set to a string identifying that fact
     body_obj = json.loads(event.get("body"))
     name_str = body_obj.get("name","no name was submitted")
