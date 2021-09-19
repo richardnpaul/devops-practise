@@ -61,3 +61,13 @@ resource "aws_s3_bucket" "lambda_s3_bucket" {
     target_prefix = "log/${var.lambda_s3_bucket}"
   }
 }
+
+resource "aws_s3_bucket_notification" "bucket_notification" {
+  bucket = aws_s3_bucket.lambda_s3_bucket.id
+
+  topic {
+    topic_arn     = aws_sns_topic.topic.arn
+    events        = ["s3:ObjectCreated:*"]
+    filter_suffix = ".txt"
+  }
+}

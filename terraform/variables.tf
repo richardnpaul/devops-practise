@@ -39,3 +39,8 @@ variable "auth_token" {
   description = "The authorization header token"
   sensitive   = true
 }
+
+variable "test_email_address" {
+  type = string
+  description = "Email address to recieve upload notifications"
+}
