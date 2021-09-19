@@ -1,0 +1,8 @@
+tf_user            = "example"
+artificial_bucket  = "example"
+lambda_s3_bucket   = "example"
+tf_log_bucket      = "example"
+site_domain        = "example.com"
+cloudflare_zone_id = "example"
+auth_token         = "example"
+test_email_address = "example@example.example"
