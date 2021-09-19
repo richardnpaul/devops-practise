@@ -1,30 +1,25 @@
 import boto3
+import json
 import os
 from datetime import datetime
 
 
 def handler(event, context):
 
-    if not event.get('Content-Length') or int(event['Content-Length']) > 4096:
-        # POST requests should be a reasonable size or we should reject them
-        # Check header exists, check size
-        exit(1)
-
-    if event.get('Authorization') != os.getenv('auth_token'):
-        # Super simple check on authorization
-        exit(1)
+    print(event["body"])
 
     # Get the three fields, or if they weren't submitted set to a string identifying that fact
-    name_str = event.get("name","no name was submitted")
-    email_str = event.get("email","no email was submitted")
-    msg_str = event.get("msg","no msg was submitted")
+    body_obj = json.loads(event.get("body"))
+    name_str = body_obj.get("name","no name was submitted")
+    email_str = body_obj.get("email","no email was submitted")
+    msg_str = body_obj.get("msg","no msg was submitted")
 
     # Deal with blank strings being submitted
-    if not name_str:
+    if not name_str or not body_obj:
         name_str = "blank"
-    if not email_str:
+    if not email_str or not body_obj:
         email_str = "blank"
-    if not msg_str:
+    if not msg_str or not body_obj:
         msg_str = "blank"
 
     body_str = f"Name: {name_str}\nEmail: {email_str}\nMessage: {msg_str}\n"
