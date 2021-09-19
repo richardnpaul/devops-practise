@@ -26,7 +26,7 @@ EOF
 }
 
 resource "aws_iam_policy" "iam_policy_for_lambda_to_s3" {
-  name        = "-policy"
+  name        = "lambda-s3-policy"
   description = "Policy for Lambda to send files to S3"
 
 
