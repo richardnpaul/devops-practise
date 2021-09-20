@@ -106,10 +106,12 @@ resource "aws_iam_role_policy" "codebuild_policy" {
   "Statement": [{
     "Effect": "Allow",
     "Resource": [
+      "${aws_s3_bucket.artificial_bucket.arn}",
       "${aws_s3_bucket.artificial_bucket.arn}/*"
     ],
     "Action": [
       "s3:PutObject",
+      "s3:PutObjectAcl",
       "s3:GetObject",
       "s3:GetObjectVersion",
       "s3:GetBucketAcl",
@@ -165,6 +167,7 @@ resource "aws_iam_role_policy" "codepipeline_policy" {
         "s3:GetObject",
         "s3:GetObjectVersion",
         "s3:GetBucketVersioning",
+        "s3:PutObjectAcl",
         "s3:PutObject"
       ],
       "Resource": [
