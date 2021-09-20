@@ -41,6 +41,21 @@ variable "auth_token" {
 }
 
 variable "test_email_address" {
-  type = string
+  type        = string
   description = "Email address to recieve upload notifications"
+}
+
+variable "github_username" {
+  type        = string
+  description = "Github username used in the github path i.e. https://github.com/<username>"
+}
+
+variable "github_project_name" {
+  type        = string
+  description = "Github project name used in the github path i.e. https://github.com/<username>/<project_name>"
+}
+
+variable "github_token" {
+  type        = string
+  description = "Github personal access token"
 }

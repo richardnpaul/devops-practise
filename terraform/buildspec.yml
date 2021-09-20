@@ -1,0 +1,28 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 12
+    commands:
+      - npm i
+  pre_build:
+    commands:
+      - npm install yarn
+      - yarn
+      #- yarn add eslint-config-react-app
+  build:
+    commands:
+      - yarn build
+  post_build:
+    commands:
+      - aws s3 cp ./build/ s3://${DeployBucket}/ --recursive --acl "public-read"
+
+artifacts:
+  files:
+    - "**/*"
+  base-directory: build
+
+cache:
+  paths:
+    - /root/.npm/**/*
