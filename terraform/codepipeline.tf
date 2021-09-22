@@ -1,4 +1,4 @@
-data "template_file" "buildspec" {
+resource "template_file" "buildspec" {
   template = file("buildspec.yml")
   vars = {
       DeployBucket = aws_s3_bucket.app_bucket.bucket
