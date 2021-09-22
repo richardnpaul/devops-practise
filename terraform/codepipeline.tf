@@ -88,7 +88,7 @@ resource "aws_codebuild_project" "codebuild" {
   source {
     type                = "CODEPIPELINE"
     buildspec           = templatefile("./buildspec.yml", { DeployBucket = aws_s3_bucket.app_bucket.bucket })
-    git_clone_depth     = 1
+    git_clone_depth     = 0
     insecure_ssl        = false
     report_build_status = false
   }
