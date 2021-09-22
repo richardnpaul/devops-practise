@@ -1,10 +1,3 @@
-data "template_file" "buildspec" {
-  template = file("buildspec.yml")
-  vars = {
-      DeployBucket = aws_s3_bucket.app_bucket.bucket
-  }
-}
-
 resource "random_password" "webhook_secret" {
   length  = 50
   special = true
@@ -94,7 +87,7 @@ resource "aws_codebuild_project" "codebuild" {
 
   source {
     type                = "CODEPIPELINE"
-    buildspec           = data.template_file.buildspec.rendered
+    buildspec           = templatefile("./buildspec.yml", { DeployBucket = aws_s3_bucket.app_bucket.bucket })
     git_clone_depth     = 1
     insecure_ssl        = false
     report_build_status = false
