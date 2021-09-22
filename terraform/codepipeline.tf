@@ -1,7 +1,7 @@
 data "template_file" "buildspec" {
   template = file("buildspec.yml")
   vars = {
-      DeployBucket = aws_s3_bucket.artificial_bucket.bucket
+      DeployBucket = aws_s3_bucket.app_bucket.bucket
   }
 }
 
@@ -15,7 +15,7 @@ resource "aws_codepipeline" "codepipeline" {
   role_arn = aws_iam_role.codepipeline_role.arn
 
   artifact_store {
-    location = aws_s3_bucket.artificial_bucket.bucket
+    location = aws_s3_bucket.app_bucket.bucket
     type     = "S3"
   }
 
@@ -69,7 +69,7 @@ resource "aws_codepipeline" "codepipeline" {
       version         = "1"
 
       configuration = {
-        BucketName = aws_s3_bucket.artificial_bucket.bucket
+        BucketName = aws_s3_bucket.app_bucket.bucket
         Extract    = "true"
       }
     }
